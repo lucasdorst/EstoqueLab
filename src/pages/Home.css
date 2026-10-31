@@ -80,3 +80,39 @@
   font-size: 14px;
   color: #444444;
 }
+
+/* HISTÓRICO DE MOVIMENTAÇÕES */
+
+.historico-movimentacoes {
+  margin: 10px 40px 30px;
+  padding: 24px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+}
+
+.historico-movimentacoes h3 {
+  margin-bottom: 20px;
+  color: #444444;
+}
+
+.historico-movimentacoes table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.historico-movimentacoes th {
+  padding: 12px;
+  background-color: #f5f7f5;
+  color: #555555;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.historico-movimentacoes td {
+  padding: 12px;
+  border-bottom: 1px solid #eeeeee;
+  color: #555555;
+  font-size: 13px;
+}

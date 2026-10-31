@@ -212,16 +212,41 @@ function Home() {
                     <h2>Alertas</h2>
                 </section>
             </main>
+
             <section className="historico-movimentacoes">
                 <h3>Movimentações registradas</h3>
 
-                {movimentacoes.map((item) => (
-                    <p key={item.id}>
-                        {item.data} — {item.produto} — Lote: {item.lote}
-                        — {item.tipo} — Quantidade: {item.quantidade}
-                        — Saldo final: {item.saldoFinal}
-                    </p>
-                ))}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Data e hora</th>
+                            <th>Produto</th>
+                            <th>Lote</th>
+                            <th>Movimentação</th>
+                            <th>Quantidade</th>
+                            <th>Saldo final</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {movimentacoes.length > 0 ? (
+                            movimentacoes.map((item) => (
+                                <tr key={item.id}>
+                                    <td>{item.data}</td>
+                                    <td>{item.produto}</td>
+                                    <td>{item.lote}</td>
+                                    <td>{item.tipo}</td>
+                                    <td>{item.quantidade}</td>
+                                    <td>{item.saldoFinal}</td>
+                                </tr>
+                            ))
+                        ) : (
+                            <tr>
+                                <td colSpan="6">Nenhuma movimentação registrada.</td>
+                            </tr>
+                        )}
+                    </tbody>
+                </table>
             </section>
         </div>
     );

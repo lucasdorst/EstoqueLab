@@ -1,0 +1,153 @@
+.formulario-lote {
+    flex: 1;
+    max-width: 600px;
+    padding: 24px;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+}
+
+.formulario-lote h2 {
+    margin-bottom: 20px;
+    color: #444444;
+}
+
+.campo-lote {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.campo-lote label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #444444;
+}
+
+.campo-lote input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d5dcd7;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    background-color: #ffffff;
+}
+
+.campo-lote input:focus {
+    border-color: #7b9b87;
+}
+
+.campo-fabricante {
+    display: flex;
+    gap: 8px;
+}
+
+.campo-fabricante input {
+    flex: 1;
+    min-width: 0;
+}
+
+.campo-fabricante button {
+    padding: 0 16px;
+    border: 1px solid #d5dcd7;
+    border-radius: 6px;
+    background-color: #f5f7f5;
+    color: #555555;
+    cursor: pointer;
+}
+
+.formulario-lote > button {
+    margin-top: 24px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    background-color: #7b9b87;
+    color: #ffffff;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.formulario-lote > button:hover {
+    background-color: #668572;
+}
+
+.campo-fabricante-pesquisa {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+}
+
+.campo-fabricante-pesquisa input {
+    width: 100%;
+}
+
+.lista-sugestoes-fabricantes {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: #ffffff;
+    border: 1px solid #d5dcd7;
+    border-radius: 6px;
+    margin-top: 4px;
+    max-height: 180px;
+    overflow-y: auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.lista-sugestoes-fabricantes button {
+    display: block;
+    width: 100%;
+    padding: 11px 12px;
+    border: none;
+    background-color: #ffffff;
+    color: #444444;
+    text-align: left;
+    cursor: pointer;
+}
+
+.lista-sugestoes-fabricantes button:hover {
+    background-color: #f2f5f2;
+}
+
+.campo-produto-pesquisa {
+    position: relative;
+    width: 100%;
+}
+
+.campo-produto-pesquisa input {
+    width: 100%;
+}
+
+.lista-sugestoes-produtos {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: #ffffff;
+    border: 1px solid #d5dcd7;
+    border-radius: 6px;
+    margin-top: 4px;
+    max-height: 180px;
+    overflow-y: auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.lista-sugestoes-produtos button {
+    display: block;
+    width: 100%;
+    padding: 11px 12px;
+    border: none;
+    background-color: #ffffff;
+    color: #444444;
+    text-align: left;
+    cursor: pointer;
+}
+
+.lista-sugestoes-produtos button:hover {
+    background-color: #f2f5f2;
+}

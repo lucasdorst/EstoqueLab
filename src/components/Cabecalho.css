@@ -1,0 +1,41 @@
+.barra-navegacao {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 20px 40px;
+  background-color: #ffffff;
+
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.barra-navegacao h2 {
+  margin: 0;
+  color: #3f5f50;
+}
+
+.barra-navegacao nav {
+  display: flex;
+  gap: 12px;
+}
+
+.barra-navegacao button {
+  border: none;
+  background-color: transparent;
+
+  padding: 10px 18px;
+  border-radius: 6px;
+
+  color: #555555;
+  cursor: pointer;
+}
+
+.barra-navegacao button:hover {
+  background-color: #f1f3f2;
+}
+
+.barra-navegacao button.ativo {
+  background-color: #e8eeea;
+  color: #3f5f50;
+  font-weight: bold;
+}

@@ -18,7 +18,6 @@ function CadastrarLote({
 
     const [numeroLote, setNumeroLote] = useState("");
     const [validadeLote, setValidadeLote] = useState("");
-    const [registroAnvisa, setRegistroAnvisa] = useState("");
     const [quantidadeLote, setQuantidadeLote] = useState("");
 
     const fabricantesFiltrados = fabricantes.filter((fabricante) =>
@@ -28,6 +27,49 @@ function CadastrarLote({
     const produtosFiltrados = produtos.filter((produto) =>
         produto.nome.toLowerCase().includes(produtoSelecionado.toLowerCase())
     );
+
+    function formatarData(valor) {
+        const numeros = valor.replace(/\D/g, "").slice(0, 8);
+
+        if (numeros.length <= 2) {
+            return numeros;
+        }
+
+        if (numeros.length <= 4) {
+            return `${numeros.slice(0, 2)}/${numeros.slice(2)}`;
+        }
+
+        return `${numeros.slice(0, 2)}/${numeros.slice(2, 4)}/${numeros.slice(4)}`;
+    }
+
+    function validarData(data) {
+        const partes = data.split("/");
+
+        if (
+            partes.length !== 3 ||
+            partes[0].length !== 2 ||
+            partes[1].length !== 2 ||
+            partes[2].length !== 4
+        ) {
+            return false;
+        }
+
+        const dia = Number(partes[0]);
+        const mes = Number(partes[1]);
+        const ano = Number(partes[2]);
+
+        if (ano < 1900 || mes < 1 || mes > 12 || dia < 1 || dia > 31) {
+            return false;
+        }
+
+        const dataVerificada = new Date(ano, mes - 1, dia);
+
+        return (
+            dataVerificada.getFullYear() === ano &&
+            dataVerificada.getMonth() === mes - 1 &&
+            dataVerificada.getDate() === dia
+        );
+    }
 
     function cadastrarLote() {
         const produto = produtos.find(
@@ -47,7 +89,6 @@ function CadastrarLote({
             !numeroLote.trim() ||
             !fabricanteSelecionado.trim() ||
             !validadeLote ||
-            !registroAnvisa.trim() ||
             quantidadeLote === ""
         ) {
             alert("Preencha todos os campos do lote.");
@@ -61,6 +102,11 @@ function CadastrarLote({
 
         if (!fabricante) {
             alert("Selecione um fabricante cadastrado na lista.");
+            return;
+        }
+
+        if (!validarData(validadeLote)) {
+            alert("Informe uma data de validade válida no formato DD/MM/AAAA.");
             return;
         }
 
@@ -83,12 +129,14 @@ function CadastrarLote({
             return;
         }
 
+        const [dia, mes, ano] = validadeLote.split("/");
+        const validadeFormatada = `${ano}-${mes}-${dia}`;
+
         onCadastrarLote({
             produtoId: produto.id,
             numeroLote: numeroLote.trim(),
             fabricanteId: fabricante.id,
-            validade: validadeLote,
-            registroAnvisa: registroAnvisa.trim(),
+            validade: validadeFormatada,
             quantidadeRecebida: quantidade,
             quantidadeAtual: quantidade
         });
@@ -97,7 +145,6 @@ function CadastrarLote({
         setFabricanteSelecionado("");
         setNumeroLote("");
         setValidadeLote("");
-        setRegistroAnvisa("");
         setQuantidadeLote("");
 
         alert("Lote cadastrado com sucesso!");
@@ -105,7 +152,7 @@ function CadastrarLote({
 
     return (
         <section className="formulario-lote">
-            <h2>Cadastro de Lote</h2>
+            <h2>Cadastro de estoque</h2>
 
             <div className="campo-lote">
                 <label htmlFor="produtoLote">Produto</label>
@@ -206,21 +253,15 @@ function CadastrarLote({
             <div className="campo-lote">
                 <label htmlFor="validadeLote">Data de validade</label>
                 <input
-                    type="date"
-                    id="validadeLote"
-                    value={validadeLote}
-                    onChange={(evento) => setValidadeLote(evento.target.value)}
-                />
-            </div>
-
-            <div className="campo-lote">
-                <label htmlFor="registroAnvisa">Registro na Anvisa</label>
-                <input
                     type="text"
-                    id="registroAnvisa"
-                    placeholder="Digite o registro na Anvisa"
-                    value={registroAnvisa}
-                    onChange={(evento) => setRegistroAnvisa(evento.target.value)}
+                    id="validadeLote"
+                    placeholder="DD/MM/AAAA"
+                    value={validadeLote}
+                    maxLength={10}
+                    inputMode="numeric"
+                    onChange={(evento) =>
+                        setValidadeLote(formatarData(evento.target.value))
+                    }
                 />
             </div>
 

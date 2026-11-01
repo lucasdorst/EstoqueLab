@@ -103,6 +103,7 @@ function CadastrarProduto({
 
                     <button
                         type="button"
+                        className="botao-editar-unidade"
                         onClick={onAbrirGerenciarUnidades}
                     >
                         Editar

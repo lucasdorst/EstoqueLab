@@ -73,3 +73,17 @@
     color: #555555;
     cursor: pointer;
 }
+
+.campo-unidade .botao-editar-unidade {
+    margin-top: 0;
+    padding: 0 16px;
+    border: 1px solid #d5dcd7;
+    border-radius: 6px;
+    background-color: #f5f7f5;
+    color: #555555;
+    cursor: pointer;
+}
+
+.campo-unidade .botao-editar-unidade:hover {
+    background-color: #f2f5f2;
+}

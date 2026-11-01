@@ -1,0 +1,82 @@
+
+.alertas-estoque {
+    background-color: #ffffff;
+    padding: 24px;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.cabecalho-alertas {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.cabecalho-alertas h2 {
+    margin: 0;
+    font-size: 20px;
+    color: #374151;
+}
+
+.contador-alertas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 26px;
+    height: 26px;
+    padding: 0 7px;
+    border-radius: 20px;
+    background-color: #f3f4f6;
+    color: #374151;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.sem-alertas {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.lista-alertas {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.item-alerta {
+    padding: 14px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background-color: #f9fafb;
+}
+
+.item-alerta strong {
+    font-size: 14px;
+    color: #374151;
+}
+
+.item-alerta p {
+    margin: 6px 0;
+    font-size: 14px;
+    color: #4b5563;
+}
+
+.item-alerta span {
+    font-size: 13px;
+    color: #6b7280;
+}
+
+.item-alerta.vencido {
+    border-left: 4px solid #b45b5b;
+}
+
+.item-alerta.validade {
+    border-left: 4px solid #c49a50;
+}
+
+.item-alerta.estoque {
+    border-left: 4px solid #6b9b83;
+}

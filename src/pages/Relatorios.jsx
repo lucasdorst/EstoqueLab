@@ -300,6 +300,8 @@ function Relatorios({
                                 <ListaProdutos
                                     produtos={produtos}
                                     unidades={unidades}
+                                    lotes={lotes}
+                                    movimentacoes={movimentacoes}
                                 />
 
                             </section>

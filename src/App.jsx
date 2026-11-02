@@ -157,7 +157,8 @@ function App() {
     function adicionarLote(dadosLote) {
         const novoLote = {
             id: Date.now(),
-            ...dadosLote
+            ...dadosLote,
+            dataEntrada: new Date().toISOString()
         };
 
         setLotes((atuais) => [...atuais, novoLote]);
@@ -292,6 +293,8 @@ function App() {
             {
                 id: Date.now(),
                 data: new Date().toISOString(),
+                produtoId: produto.id,
+                loteId: lote.id,
                 produto: produto?.nome || "Produto não encontrado",
                 lote: lote.numeroLote,
                 tipo: "Consumo",
@@ -410,6 +413,8 @@ function App() {
             {
                 id: Date.now(),
                 data: dataHora.toISOString(),
+                produtoId: produto.id,
+                loteId: lote.id,
                 produto: produto?.nome || "Produto não encontrado",
                 lote: lote.numeroLote,
                 tipo: "Consumo",

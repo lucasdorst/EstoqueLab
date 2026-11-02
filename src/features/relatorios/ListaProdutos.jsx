@@ -1,8 +1,7 @@
-
 import { useState } from "react";
 import "./ListaProdutos.css";
 
-function ListaProdutos({ produtos, unidades }) {
+function ListaProdutos({ produtos, unidades, lotes, movimentacoes }) {
     const [busca, setBusca] = useState("");
 
     const produtosFiltrados = produtos.filter((produto) =>
@@ -11,6 +10,56 @@ function ListaProdutos({ produtos, unidades }) {
 
     function limparFiltro() {
         setBusca("");
+    }
+
+    function calcularTempoMedio(produtoId) {
+        const consumosProduto = movimentacoes.filter(
+            (movimentacao) =>
+                movimentacao.tipo === "Consumo" &&
+                movimentacao.produtoId === produtoId &&
+                movimentacao.loteId != null
+        );
+
+        let quantidadeTotalConsumida = 0;
+        let tempoTotalPonderado = 0;
+
+        consumosProduto.forEach((consumo) => {
+            const lote = lotes.find(
+                (lote) => lote.id === consumo.loteId
+            );
+
+            if (!lote || !lote.dataEntrada) {
+                return;
+            }
+
+            const dataEntrada = new Date(lote.dataEntrada);
+            const dataConsumo = new Date(consumo.data);
+
+            if (
+                Number.isNaN(dataEntrada.getTime()) ||
+                Number.isNaN(dataConsumo.getTime()) ||
+                dataConsumo < dataEntrada ||
+                !Number.isFinite(consumo.quantidade) ||
+                consumo.quantidade <= 0
+            ) {
+                return;
+            }
+
+            const tempoEmDias =
+                (dataConsumo - dataEntrada) / (1000 * 60 * 60 * 24);
+
+            tempoTotalPonderado += tempoEmDias * consumo.quantidade;
+            quantidadeTotalConsumida += consumo.quantidade;
+        });
+
+        if (quantidadeTotalConsumida === 0) {
+            return "—";
+        }
+
+        const mediaEmDias =
+            tempoTotalPonderado / quantidadeTotalConsumida;
+
+        return `${mediaEmDias.toFixed(1).replace(".", ",")} dias`;
     }
 
     return (
@@ -43,6 +92,7 @@ function ListaProdutos({ produtos, unidades }) {
                                 <th>Unidade</th>
                                 <th>Estoque mínimo</th>
                                 <th>Estoque máximo</th>
+                                <th>Tempo médio de permanência</th>
                             </tr>
                         </thead>
 
@@ -58,6 +108,7 @@ function ListaProdutos({ produtos, unidades }) {
                                         <td>{unidade ? unidade.nome : "—"}</td>
                                         <td>{produto.estoqueMinimo}</td>
                                         <td>{produto.estoqueMaximo}</td>
+                                        <td>{calcularTempoMedio(produto.id)}</td>
                                     </tr>
                                 );
                             })}

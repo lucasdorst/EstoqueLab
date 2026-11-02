@@ -1,7 +1,6 @@
-
 import Cabecalho from "../components/Cabecalho";
-import RegistrarConsumo from "../features/estoque/RegistrarConsumo";
-import AlertasEstoque from "../features/estoque/AlertasEstoque";
+import RegistrarConsumo from "../features/home/RegistrarConsumo";
+import AlertasEstoque from "../features/home/AlertasEstoque";
 import "./Home.css";
 
 function Home({

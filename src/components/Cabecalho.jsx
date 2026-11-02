@@ -1,4 +1,3 @@
-
 import "./Cabecalho.css";
 
 function Cabecalho({ paginaAtiva, onNavegar }) {

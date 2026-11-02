@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import "./RegistrarConsumo.css";
 
@@ -12,7 +11,6 @@ function RegistrarConsumo({
     const [produtoBusca, setProdutoBusca] = useState("");
     const [produtoSelecionado, setProdutoSelecionado] = useState(null);
     const [produtoFocado, setProdutoFocado] = useState(false);
-
     const [loteSelecionado, setLoteSelecionado] = useState("");
     const [quantidade, setQuantidade] = useState("");
 
